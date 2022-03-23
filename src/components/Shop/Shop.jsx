@@ -2,31 +2,16 @@ import React from "react";
 import Product from "./Product/Product";
 import Search from "./Search/Search";
 import "./Shop.css";
-const Shop = () => {
+const Shop = ({ weapons }) => {
   return (
     <>
       <section id="shop">
         <div className="container">
           <Search />
           <div className="shop-container">
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+            {weapons.map((weapon) => (
+              <Product key={weapon.id} weapon={weapon} />
+            ))}
           </div>
         </div>
       </section>

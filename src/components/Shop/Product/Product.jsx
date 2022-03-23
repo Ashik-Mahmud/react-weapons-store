@@ -1,17 +1,15 @@
 import React from "react";
 import { BsCartPlus } from "react-icons/bs";
 import "./Product.css";
-const Product = () => {
+const Product = ({ weapon }) => {
+  const { img, name } = weapon;
   return (
     <div className="product">
       <div className="image">
-        <img
-          src="https://raw.githubusercontent.com/mir-hussain/guns/main/guns/FN.png"
-          alt=""
-        />
+        <img src={img} alt={name} />
       </div>
       <div className="details">
-        <h3>Name goes here</h3>
+        <h3>{name}</h3>
         <div className="inner-details">
           <ul>
             <li>
