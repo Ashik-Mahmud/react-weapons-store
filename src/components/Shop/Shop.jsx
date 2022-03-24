@@ -11,6 +11,7 @@ const Shop = ({
   setSearchWeapons,
 }) => {
   const [search, setSearch] = useState("");
+  const [message, setMessage] = useState(false);
 
   const handleSearch = () => {
     if (!search) {
@@ -21,6 +22,8 @@ const Shop = ({
     );
     setSearchWeapons(searchedWeapons);
   };
+
+  setTimeout(() => setMessage(false), 5000);
 
   return (
     <>
@@ -39,6 +42,7 @@ const Shop = ({
                   weapon={weapon}
                   setCartCount={setCartCount}
                   setStorageCartItem={setStorageCartItem}
+                  setMessage={setMessage}
                 />
               ))}
             </div>
@@ -52,6 +56,9 @@ const Shop = ({
           )}
         </div>
       </section>
+      <div className={`success-message ${message ? "active" : ""}`}>
+        Product Added Successfully
+      </div>
     </>
   );
 };

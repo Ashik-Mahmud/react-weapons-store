@@ -13,3 +13,18 @@
 .not-found-message {
   text-align: center;
 }
+.success-message {
+  position: fixed;
+  right: 5%;
+  bottom: -100%;
+  z-index: 3;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--secondary-color);
+  color: var(--secondary-color);
+  transition: all 0.4s ease;
+}
+.success-message.active {
+  bottom: 5%;
+}

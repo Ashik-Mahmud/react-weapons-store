@@ -3,13 +3,14 @@ import { BsCartPlus } from "react-icons/bs";
 import { storageItem } from "../../Storage/Storage";
 import { handleStorage } from "./HandleStorage";
 import "./Product.css";
-const Product = ({ weapon, setCartCount, setStorageCartItem }) => {
+const Product = ({ weapon, setCartCount, setStorageCartItem, setMessage }) => {
   const { img, name, bullet, capacity, action, category, price, id } = weapon;
 
   const handleCart = (id) => {
     handleStorage(id);
     setCartCount(storageItem().length);
     setStorageCartItem(storageItem());
+    setMessage(true);
   };
 
   useEffect(() => {
