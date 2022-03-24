@@ -10,3 +10,6 @@
   position: relative;
   margin-top: 1rem;
 }
+.not-found-message {
+  text-align: center;
+}

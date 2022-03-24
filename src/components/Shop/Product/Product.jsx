@@ -18,9 +18,12 @@ const Product = ({ weapon, setCartCount, setStorageCartItem }) => {
   }, [setCartCount, setStorageCartItem]);
 
   return (
-    <div className="product">
+    <div className="product" title="Click to see Big Preview for Gun">
       <div className="image">
         <img src={img} alt={name} />
+        <div className="preview">
+          <img src={img} alt={name} />
+        </div>
       </div>
       <div className="details">
         <h3>{name}</h3>

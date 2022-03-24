@@ -4,6 +4,7 @@ import Shop from '../Shop/Shop'
 const Home = () => {
 
     const [weapons, setWeapons] = useState([])
+    const [searchWeapons, setSearchWeapons] =  useState([])
     const [cartCount, setCartCount] = useState(0)
     const [storageCartItem, setStorageCartItem] = useState([])
     const handleClear = () => {
@@ -16,7 +17,10 @@ const Home = () => {
     useEffect(()=>{
         fetch('./data.json')
         .then(response => response.json())
-        .then(data => setWeapons(data))
+        .then(data => {
+            setWeapons(data)
+            setSearchWeapons(data)
+        })
     }, [])
 
 
@@ -24,7 +28,7 @@ const Home = () => {
   return (
     <>
         <Header cartCount={cartCount} storageCartItem={storageCartItem} handleClear={handleClear} weapons={weapons} />
-        <Shop weapons={weapons} setStorageCartItem={setStorageCartItem} setCartCount={setCartCount} />
+        <Shop weapons={weapons} searchWeapons={searchWeapons} setWeapons={setWeapons} setStorageCartItem={setStorageCartItem} setCartCount={setCartCount} setSearchWeapons={setSearchWeapons} />
     </>
   )
 }

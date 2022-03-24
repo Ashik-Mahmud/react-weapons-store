@@ -6,9 +6,6 @@ const CartItem = ({ cart, storageCartItem }) => {
     <li className="item">
       <div className="img">
         <img src={img} alt={"name"} />
-        <div className="preview">
-          <img src={img} alt={name} />
-        </div>
       </div>
       <div className="info">
         <span>{name}</span>
