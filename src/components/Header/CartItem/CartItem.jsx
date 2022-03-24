@@ -1,18 +1,21 @@
 import React from "react";
-const CartItem = () => {
+const CartItem = ({ cart, storageCartItem }) => {
+  const { img, name, bullet, price } = cart;
+
   return (
     <li className="item">
       <div className="img">
-        <img
-          src="https://raw.githubusercontent.com/mir-hussain/guns/main/guns/glock.png"
-          alt=""
-        />
+        <img src={img} alt={"name"} />
+        <div className="preview">
+          <img src={img} alt={name} />
+        </div>
       </div>
       <div className="info">
-        <span>goes name here</span>
+        <span>{name}</span>
         <div className="inner-info">
-          <small>4354$</small>
-          <small>95MM</small>
+          <small>{price}$</small>
+
+          <small>{bullet}</small>
         </div>
       </div>
     </li>

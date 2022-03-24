@@ -134,3 +134,24 @@
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
+.error-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+}
+.error-message h1 {
+  font-size: 5rem;
+}
+.clear-cart {
+  cursor: pointer;
+  background: #ff412c;
+  display: block;
+  padding: 0.2rem;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.preview {
+  position: absolute;
+}

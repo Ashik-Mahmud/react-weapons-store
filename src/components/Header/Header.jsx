@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
 import { FaShoppingBasket, FaUserCheck } from "react-icons/fa";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import CartItem from "./CartItem/CartItem";
 import "./Header.css";
-const Header = () => {
+const Header = ({ cartCount, weapons, storageCartItem, handleClear }) => {
   const [showCart, setShowCart] = useState(false);
+  const cartItemsId = storageCartItem?.map((cart) => cart.id);
+  const filterItems = weapons.filter((weapon) =>
+    cartItemsId.includes(weapon.id)
+  );
 
   return (
     <>
@@ -34,34 +39,40 @@ const Header = () => {
                 onClick={() => setShowCart((prev) => !prev)}
               >
                 <BsCartCheck />
-                <sup className="badge">0</sup>
+                <sup className="badge">{cartCount}</sup>
               </a>
               <ul className={`carts-item ${showCart ? "active" : " "}`}>
-                <div className="carts-header">
-                  <h4>Cart Items</h4>
-                  <span
-                    className="close-btn"
-                    onClick={() => setShowCart(false)}
-                  >
-                    &times;
-                  </span>
-                </div>
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
+                {storageCartItem.length > 0 ? (
+                  <>
+                    {" "}
+                    <div className="carts-header">
+                      <h4>Cart Items</h4>
+                      <small className="clear-cart" onClick={handleClear}>
+                        Clear Cart
+                      </small>
+                      <span
+                        className="close-btn"
+                        onClick={() => setShowCart(false)}
+                      >
+                        &times;
+                      </span>
+                    </div>
+                    {filterItems.map((cart) => (
+                      <CartItem
+                        key={cart.id}
+                        cart={cart}
+                        storageCartItem={storageCartItem}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <div className="error-message">
+                    <h1>
+                      <MdOutlineRemoveShoppingCart />
+                    </h1>
+                    <span>No Carts Found.</span>
+                  </div>
+                )}
               </ul>
             </li>
           </ul>
